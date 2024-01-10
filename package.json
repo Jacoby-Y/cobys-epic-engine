@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "cobys-epic-engine",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A basic engine with functions for drawing to a canvas, adding update function and signals.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
