@@ -1,5 +1,11 @@
 # cobys-epic-engine
 
+## 0.3.0
+
+### Minor Changes
+
+- 1697e80: Fully implement signal, game runner and utils
+
 ## 0.1.2
 
 ### Patch Changes
