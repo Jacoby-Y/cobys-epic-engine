@@ -1,6 +1,7 @@
+
 type SignalFunction = (data: any)=> void;
 
-interface SignalProps {
+type SignalType = {
     listeners: {
         [key: string]: SignalFunction[],
     }
@@ -10,7 +11,7 @@ interface SignalProps {
     // runBatched(): void
 }
 
-const signal: SignalProps = {
+const signal: SignalType = {
     listeners: { },
 
     /** Adds the lister and returns an un-listen function */
