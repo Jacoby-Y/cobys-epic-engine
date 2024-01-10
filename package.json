@@ -1,13 +1,13 @@
 {
   "type": "module",
   "name": "cobys-epic-engine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A basic engine with functions for drawing to a canvas, adding update function and signals.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/**/* --format cjs,esm --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc"
   },
   "keywords": [],
