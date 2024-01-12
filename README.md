@@ -12,13 +12,14 @@ ___
 
 #### Roadmap:
 - [ ] Fix up the intellisense for importing (Yeah, it doesn't work right now)
+- [ ] Make documentation website (How do others do this? Wait! Don't tell me... do they- nah, I don't know lol)
 - [ ] Make it a some-batteries-included [ESC](https://en.wikipedia.org/wiki/Entity_component_system)? (Just an idea, but probably not; it's hard, I've tried)
 - [ ] Fix up and add better/more draw functions
 - [ ] Add default signals such as: key, mouse and window events. (Probably make it an "opt-in" feature with a `setupDefaultSignals()`)
 - [ ] Examples:
     - [x] Basic square-moving-around example (see below)
     - [ ] Idle Orbs: Remastered (I'm planning on making this anyway, but it'll also be a good example)
-    - [ ] Some platformer or something, idk.
+    - [ ] Some platformer or something, idk
 
 ___
 
