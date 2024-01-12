@@ -1,7 +1,11 @@
-import Signal from "./Signal/Signal";
-import * as CobysUtils from "./CobysUtils/CobysUtils";
-import * as Runner from "./Runner/Runner";
+import signal from "./Signal/Signal";
+import * as cobysUtils from "./CobysUtils/CobysUtils";
+import * as draw from "./Draw/Draw";
+import * as runner from "./Runner/Runner";
 
-export const signal = Signal;
-export const cobysUtils = CobysUtils;
-export const runner = Runner;
+export default {
+    signal,
+    cobysUtils,
+    draw,
+    runner,
+}

@@ -4,10 +4,35 @@
   "version": "0.2.2",
   "description": "A basic engine with functions for drawing to a canvas, adding update function and signals.",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./runner": {
+      "import": "./dist/Runner/Runner.js",
+      "require": "./dist/Runner/Runner.cjs",
+      "types": "./dist/Runner/Runner.d.ts"
+    },
+    "./draw": {
+      "import": "./dist/Draw/Draw.js",
+      "require": "./dist/Draw/Draw.cjs",
+      "types": "./dist/Draw/Draw.d.ts"
+    },
+    "./cobys-utils": {
+      "import": "./dist/CobysUtils/CobysUtils.js",
+      "require": "./dist/CobysUtils/CobysUtils.cjs",
+      "types": "./dist/CobysUtils/CobysUtils.d.ts"
+    },
+    "./signal": {
+      "import": "./dist/Signal/Signal.js",
+      "require": "./dist/Signal/Signal.cjs",
+      "types": "./dist/Signal/Signal.d.ts"
+    }
+  },
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup src/**/* --format cjs,esm --dts",
     "lint": "tsc"
   },
   "keywords": [],
