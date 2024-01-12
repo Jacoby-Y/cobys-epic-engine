@@ -9,7 +9,7 @@ And, when I say "barebones" I mean it. There's only functions for:
 - Emitting and listening to signals
 
 
-Roadmap:
+#### Roadmap:
 - [ ] Fix up the intellisense for importing (Yeah, it doesn't work right now)
 - [ ] Make it a some-batteries-included [ESC](https://en.wikipedia.org/wiki/Entity_component_system)? (Just an idea, but probably not; it's hard, I've tried)
 - [ ] Fix up and add better/more draw functions
