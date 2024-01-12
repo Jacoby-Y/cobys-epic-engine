@@ -8,6 +8,7 @@ And, when I say "barebones" I mean it. There's only functions for:
 - Adding and running update functions (that run every frame)
 - Emitting and listening to signals
 
+___
 
 #### Roadmap:
 - [ ] Fix up the intellisense for importing (Yeah, it doesn't work right now)
@@ -19,6 +20,7 @@ And, when I say "barebones" I mean it. There's only functions for:
     - [ ] Idle Orbs: Remastered (I'm planning on making this anyway, but it'll also be a good example)
     - [ ] Some platformer or something, idk.
 
+___
 
 #### Example, [Found Here](https://jacoby-y.github.io/cobys-epic-engine_example-1/)
 ```js
