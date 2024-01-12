@@ -1,6 +1,24 @@
 ## Coby's Epic Engine
 
-Hey guys, I made an engine. I've been using this engine for a while and I'm getting sick and tired of constantly copying and pasting my engine code into new projects, so here I am. You guys can use my engine too, but you might not understand how to use it and I don't really care to make it user friendly at the moment.
+A barebones engine I've developed and used to publish multiple of my games [on Itch.io](https://jacoby-y.itch.io/) (and my unreleased Idle Orbs 4)
+
+
+And, when I say "barebones" I mean it. There's only functions for:
+- Drawing basic shapes and text
+- Adding and running update functions (that run every frame)
+- Emitting and listening to signals
+
+
+Roadmap:
+- [ ] Fix up the intellisense for importing (Yeah, it doesn't work right now)
+- [ ] Make it a some-batteries-included [ESC](https://en.wikipedia.org/wiki/Entity_component_system)? (Just an idea, but probably not; it's hard, I've tried)
+- [ ] Fix up and add better/more draw functions
+- [ ] Add default signals such as: key, mouse and window events. (Probably make it an "opt-in" feature with a `setupDefaultSignals()`)
+- [ ] Examples:
+    - [x] Basic square-moving-around example (see below)
+    - [ ] Idle Orbs: Remastered (I'm planning on making this anyway, but it'll also be a good example)
+    - [ ] Some platformer or something, idk.
+
 
 #### Example, [Found Here](https://jacoby-y.github.io/cobys-epic-engine_example-1/)
 ```js
