@@ -81,3 +81,14 @@ startGame();
 
 // A red square will now bounce around the canvas like that DvD logo (ya know what I mean?)
 ```
+
+___
+
+#### Installation
+```bash
+# Just install it using npm (or pnpm, of course)
+
+npm i cobys-epic-engine@latest
+
+# That's... kind it, I think?
+```
