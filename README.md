@@ -90,5 +90,5 @@ ___
 
 npm i cobys-epic-engine@latest
 
-# That's... kind it, I think?
+# That's it, right?
 ```
