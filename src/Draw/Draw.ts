@@ -25,13 +25,17 @@ export let enabled = (new_val?: boolean)=>{
 let scale = 1;
 let background_color = "#263238";
 
-
+let og_width = 0;
+let og_height = 0;
 
 export function setCanvas(_canvas: HTMLCanvasElement) {
     canvas = _canvas;
     ctx = _canvas.getContext("2d");
 
     ctx.lineCap = "round";
+
+    og_width = canvas.width;
+    og_height = canvas.height;
 
     setScale();
 }
@@ -51,7 +55,8 @@ export function toggleEnabled(set?: boolean) {
 
 export function setScale(_scale: float = scale) {
     scale = _scale;
-    canvas.width = canvas.height = 1080 * _scale;
+    canvas.width = og_width * _scale;
+    canvas.height = og_height * _scale;
 }
 
 export function setBackgroundColor(color: string) {
