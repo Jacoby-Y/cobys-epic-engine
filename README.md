@@ -2,11 +2,12 @@
 
 A barebones engine I've developed and used to publish multiple of my games [on Itch.io](https://jacoby-y.itch.io/) (and my unreleased Idle Orbs 4)
 
-
 And, when I say "barebones" I mean it. There's only functions for:
 - Drawing basic shapes and text
 - Adding and running update functions (that run every frame)
 - Emitting and listening to signals
+
+Let's just say... I wouldn't make a game with JUST this (I use Svelte for everything else). But, if you do, GUI and all, then that's awesome
 
 ___
 
@@ -23,7 +24,7 @@ ___
 
 ___
 
-#### Example, [Found Here](https://jacoby-y.github.io/cobys-epic-engine_example-1/)
+#### Example, [Found Here](https://github.com/jacoby-y/cobys-epic-engine_example-1/)
 ```js
 import { createCanvas, clearCanvas, canvas_size, fillRect, setBackgroundColor } from "cobys-epic-engine/draw";
 import { runner, startGame } from "cobys-epic-engine/runner";
