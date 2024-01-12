@@ -7,7 +7,7 @@ type RunnerType = {
     // trackTime(name: string, ms: number): void
 }
 
-const runner: RunnerType = {
+export const runner: RunnerType = {
     funcs: [],
     /** Add one or more functions to run every frame */
     add(...fn) {
