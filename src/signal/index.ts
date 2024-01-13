@@ -16,15 +16,15 @@ const signal: SignalType = {
 
     /** Adds the lister and returns an un-listen function */
     listen(name, listener) {
-        if (!Array.isArray(this.listeners[name as string])) this.listeners[name as string] = [];
-        this.listeners[name as string]!.push(listener);
+        if (!Array.isArray(this.listeners[name as unknown as string])) this.listeners[name as unknown as string] = [];
+        this.listeners[name as unknown as string]!.push(listener);
 
         return function() {
-            signal.listeners[name as string]?.splice(signal.listeners[name as string]!.indexOf(listener));
+            signal.listeners[name as unknown as string]?.splice(signal.listeners[name as unknown as string]!.indexOf(listener));
         }
     },
     emit(name, data = null) {
-        const instant = this.listeners[name as string];
+        const instant = this.listeners[name as unknown as string];
         
         if (instant == undefined) return;
         

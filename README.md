@@ -12,7 +12,7 @@ Let's just say... I wouldn't make a game with JUST this (I use Svelte for everyt
 ___
 
 #### Roadmap:
-- [ ] Fix up the intellisense for importing (Yeah, it doesn't work right now)
+- [x] Fix up the intellisense for importing (IT WORKS NOW, YAY)
 - [ ] Make documentation website (How do others do this? Wait! Don't tell me... do they- nah, I don't know lol)
 - [ ] Make it a some-batteries-included [ESC](https://en.wikipedia.org/wiki/Entity_component_system)? (Just an idea, but probably not; it's hard, I've tried)
 - [ ] Fix up and add better/more draw functions
