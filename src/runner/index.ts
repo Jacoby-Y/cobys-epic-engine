@@ -1,3 +1,4 @@
+import { isCanvasSet } from "../draw"
 
 type RunnerType = {
     funcs: { (): void }[]
@@ -76,6 +77,8 @@ function runGame(time_stamp: number = performance.now()) {
 }
 
 export function startGame() {
+    if (!isCanvasSet()) console.warn("startGame() is running when the canvas isn't set yet!");
+
     runGame();
 }
 

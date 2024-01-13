@@ -1,3 +1,4 @@
+import { isCanvasSet } from "../draw";
 export const runner = {
     funcs: [],
     /** Add one or more functions to run every frame */
@@ -55,6 +56,8 @@ function runGame(time_stamp = performance.now()) {
     requestAnimationFrame(runGame);
 }
 export function startGame() {
+    if (!isCanvasSet())
+        console.warn("startGame() is running when the canvas isn't set yet!");
     runGame();
 }
 export const time = {

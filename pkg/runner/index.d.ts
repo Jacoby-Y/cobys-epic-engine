@@ -1,4 +1,4 @@
-declare type RunnerType = {
+type RunnerType = {
     funcs: {
         (): void;
     }[];

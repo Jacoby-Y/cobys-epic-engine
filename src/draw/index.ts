@@ -1,3 +1,4 @@
+import signal, { DefaultSignalName } from "../signal";
 
 type num = number;
 type float = number;
@@ -28,7 +29,12 @@ let background_color = "#263238";
 let og_width = 0;
 let og_height = 0;
 
-export function setCanvas(_canvas: HTMLCanvasElement) {
+export function setCanvas(_canvas: HTMLCanvasElement | null) {
+    if (_canvas == null) {
+        unsetCanvas();
+        return;
+    }
+
     canvas = _canvas;
     ctx = _canvas.getContext("2d");
 
@@ -38,10 +44,12 @@ export function setCanvas(_canvas: HTMLCanvasElement) {
     og_height = canvas.height;
 
     setScale();
+
+    signal.emit<DefaultSignalName>("SetCanvas", canvas);
 }
 
 export function unsetCanvas(remove_canvas_element = false) {
-    if (remove_canvas_element) canvas.parentElement.removeChild(canvas);
+    if (remove_canvas_element) canvas?.parentElement.removeChild(canvas);
 
     ctx = null;
     canvas = null;
@@ -57,10 +65,15 @@ export function setScale(_scale: float = scale) {
     scale = _scale;
     canvas.width = og_width * _scale;
     canvas.height = og_height * _scale;
+    signal.emit<DefaultSignalName>("SetScale", scale);
 }
 
 export function setBackgroundColor(color: string) {
     background_color = color;
+}
+
+export function isCanvasSet() {
+    return canvas != null;
 }
 
 /** Create and bind canvas to project. Optionally provide parent to attach to. */
@@ -199,17 +212,29 @@ export function drawPath(points: num[], color: str, line_width: num, fill: boole
 }
 
 
+let $fill_style = "";
 export function setFill(color: str) {
     if (!enabled()) return;
 
-    if (ctx.fillStyle != color) ctx.fillStyle = color;
+    if ($fill_style != color) {
+        $fill_style = color
+        ctx.fillStyle = color;
+    }
 }
 
+let $stroke_style = "";
+let $line_width = 2;
 export function setStroke(color: str, width: num) {
     if (!enabled()) return;
     
-    if (ctx.strokeStyle != color) ctx.strokeStyle = color;
-    if (ctx.lineWidth != width) ctx.lineWidth = width;
+    if ($stroke_style != color) {
+        $stroke_style = color;
+        ctx.strokeStyle = color;
+    }
+    if ($line_width != width) {
+        $line_width = width;
+        ctx.lineWidth = width;
+    }
 }
 
 export function setFont(font: str) {

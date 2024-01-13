@@ -1,6 +1,6 @@
-declare type num = number;
-declare type float = number;
-declare type str = string;
+type num = number;
+type float = number;
+type str = string;
 export declare let ctx: CanvasRenderingContext2D;
 export declare let canvas: HTMLCanvasElement;
 export declare let canvas_size: {
@@ -13,11 +13,12 @@ export declare let canvas_size: {
 };
 /** `enabled() = get value` || `enabled(true | false) = set value` */
 export declare let enabled: (new_val?: boolean) => false | CanvasRenderingContext2D;
-export declare function setCanvas(_canvas: HTMLCanvasElement): void;
+export declare function setCanvas(_canvas: HTMLCanvasElement | null): void;
 export declare function unsetCanvas(remove_canvas_element?: boolean): void;
 export declare function toggleEnabled(set?: boolean): void;
 export declare function setScale(_scale?: float): void;
 export declare function setBackgroundColor(color: string): void;
+export declare function isCanvasSet(): boolean;
 /** Create and bind canvas to project. Optionally provide parent to attach to. */
 export declare function createCanvas(width?: num, height?: num, parent?: HTMLElement): void;
 export declare function fillCircle(x: num, y: num, r: num, color: str, do_path?: boolean): void;

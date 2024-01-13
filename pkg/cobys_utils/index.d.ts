@@ -1,7 +1,7 @@
-declare type int = number;
-declare type uint = number;
-declare type float = number;
-declare type Pos = {
+type int = number;
+type uint = number;
+type float = number;
+type Pos = {
     x: number;
     y: number;
 };

@@ -1,3 +1,4 @@
+import signal from "../signal";
 export let ctx;
 export let canvas;
 export let canvas_size = {
@@ -20,16 +21,21 @@ let background_color = "#263238";
 let og_width = 0;
 let og_height = 0;
 export function setCanvas(_canvas) {
+    if (_canvas == null) {
+        unsetCanvas();
+        return;
+    }
     canvas = _canvas;
     ctx = _canvas.getContext("2d");
     ctx.lineCap = "round";
     og_width = canvas.width;
     og_height = canvas.height;
     setScale();
+    signal.emit("SetCanvas", canvas);
 }
 export function unsetCanvas(remove_canvas_element = false) {
     if (remove_canvas_element)
-        canvas.parentElement.removeChild(canvas);
+        canvas?.parentElement.removeChild(canvas);
     ctx = null;
     canvas = null;
 }
@@ -43,9 +49,13 @@ export function setScale(_scale = scale) {
     scale = _scale;
     canvas.width = og_width * _scale;
     canvas.height = og_height * _scale;
+    signal.emit("SetScale", scale);
 }
 export function setBackgroundColor(color) {
     background_color = color;
+}
+export function isCanvasSet() {
+    return canvas != null;
 }
 /** Create and bind canvas to project. Optionally provide parent to attach to. */
 export function createCanvas(width = 1080, height = 1080, parent = document.body) {
@@ -169,19 +179,28 @@ export function drawPath(points, color, line_width, fill) {
     else
         ctx.stroke();
 }
+let $fill_style = "";
 export function setFill(color) {
     if (!enabled())
         return;
-    if (ctx.fillStyle != color)
+    if ($fill_style != color) {
+        $fill_style = color;
         ctx.fillStyle = color;
+    }
 }
+let $stroke_style = "";
+let $line_width = 2;
 export function setStroke(color, width) {
     if (!enabled())
         return;
-    if (ctx.strokeStyle != color)
+    if ($stroke_style != color) {
+        $stroke_style = color;
         ctx.strokeStyle = color;
-    if (ctx.lineWidth != width)
+    }
+    if ($line_width != width) {
+        $line_width = width;
         ctx.lineWidth = width;
+    }
 }
 export function setFont(font) {
     if (!enabled())
