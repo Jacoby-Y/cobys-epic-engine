@@ -1,0 +1,34 @@
+{
+  "type": "module",
+  "name": "cobys-epic-engine",
+  "version": "0.3.6",
+  "description": "A basic engine with functions for drawing to a canvas, adding update function and signals.",
+  "main": "index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./runner": {
+      "types": "./index.d.ts",
+      "default": "./runner/index.js"
+    },
+    "./draw": {
+      "types": "./index.d.ts",
+      "default": "./draw/index.js"
+    },
+    "./cobys-utils": {
+      "types": "./index.d.ts",
+      "default": "./cobys_utils/index.js"
+    },
+    "./signal": {
+      "types": "./index.d.ts",
+      "default": "./signal/index.js"
+    }
+  },
+  "types": "index.d.ts",
+  "keywords": [],
+  "author": "Jacoby-Y",
+  "license": "ISC"
+}
