@@ -40,7 +40,7 @@ const addFive = x => x + 5;
 const multiplyByTwo = x => x * 2;
 const square = x => x * x;
 
-const doMath = compose(
+const doMath = compose<number>(
     addFive,
     multiplyByTwo,
     square,

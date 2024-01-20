@@ -10,7 +10,7 @@ const signal = {
             signal.listeners[name]?.splice(signal.listeners[name].indexOf(listener));
         };
     },
-    listenOn(name, value, listener) {
+    listenFor(name, value, listener) {
         if (this.case_listeners[name] == undefined)
             this.case_listeners[name] = {};
         if (this.case_listeners[name][value] == undefined)
@@ -29,8 +29,17 @@ const signal = {
         if (listener == undefined)
             return;
         for (let i = 0; i < listener.length; i++) {
+            const cases = case_listeners?.[data];
+            if (cases != undefined) {
+                let skip_default_listener = false;
+                for (let j = 0; j < cases.length; j++) {
+                    if (cases[j]() === true)
+                        skip_default_listener = true;
+                }
+                if (skip_default_listener)
+                    continue;
+            }
             listener[i]?.(data);
-            case_listeners?.[data]?.forEach(fn => fn());
         }
     },
 };

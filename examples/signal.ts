@@ -1,29 +1,24 @@
 import signal from "cobys-epic-engine/signal";
 
 
-// Listen to key presses
-// Also, returns an "un-listen" function
-const keyPressUnlisten = signal.listen("KeyPress", (key)=>{
-    console.log("Key: " + key);
+window.onkeydown = ({ key })=>{
+    signal.emit("KeyDown", key);
+}
+
+
+// Listen to "KeyDown" event
+// Also, returns an unlisten function
+const unlisten = signal.listen("KeyDown", key => {
+    console.log("Key pressed: " + key);
 });
 
-// Listen to whenever the key press passes SPECIFICALLY the "a" key value
-const aKeyUnlisten = signal.listenOn("KeyPress", "a", ()=>{
-    console.log("Press 'a' key!");
-});
+
+signal.emit("KeyDown", "a"); //> "Key pressed: a"
 
 
-/// Emit key presses "b", "c" and "a"
-signal.emit("KeyPress", "c"); // Log: "Key: c"
-signal.emit("KeyPress", "b"); // Log: "Key: b"
-signal.emit("KeyPress", "a"); // Log: "Key: a" AND "Press 'a' key!"
+// Run to remove listener and prevent memory leak
+// Not always needed, though
+unlisten();
 
-// Unlisten to listener that only runs when the user presses the "a" key
-aKeyUnlisten(); 
 
-signal.emit("KeyPress", "a"); // Only logs: "Key: a" NOT the other log from before
-
-// Unlisten to previously created "KeyPress" listener
-keyPressUnlisten();
-
-signal.emit("KeyPress", "a"); // Logs nothing
+signal.emit("KeyDown", "a"); // No output

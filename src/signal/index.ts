@@ -1,9 +1,10 @@
 
 export type DefaultSignalName = ("SetCanvas" | "SetScale");
 
-type SignalFunction = (data?: any)=> void;
+type SignalFunction = (data: any)=> void;
+type CaseSignalFunction = ()=> (void | boolean);
 
-type CaseListeners = Record<any, SignalFunction[]>;
+type CaseListeners = Record<any, CaseSignalFunction[]>;
 
 type SignalType = {
     listeners: {
@@ -15,7 +16,7 @@ type SignalType = {
     }
 
     listen(name: any, listener: SignalFunction): ()=> void
-    listenOn(name: any, value: any, listener: SignalFunction): ()=> void
+    listenFor(name: any, value: (any | ((value: any)=> boolean)), listener: CaseSignalFunction): ()=> void
     emit<T = string>(name: T, data?: any): void
     // runBatched(): void
 }
@@ -33,7 +34,7 @@ const signal: SignalType = {
             signal.listeners[name]?.splice(signal.listeners[name]!.indexOf(listener));
         }
     },
-    listenOn(name, value, listener) {
+    listenFor(name, value, listener) {
         if (this.case_listeners[name] == undefined) this.case_listeners[name] = {};
         if (this.case_listeners[name][value] == undefined) this.case_listeners[name][value] = [];
         this.case_listeners[name][value].push(listener);
@@ -53,9 +54,19 @@ const signal: SignalType = {
         if (listener == undefined) return;
         
         for (let i = 0; i < listener.length; i++) {
-            listener[i]?.(data);
+            const cases = case_listeners?.[data];
 
-            case_listeners?.[data]?.forEach(fn => fn());
+            if (cases != undefined) {
+                let skip_default_listener = false;
+
+                for (let j = 0; j < cases.length; j++) {
+                    if (cases[j]() === true) skip_default_listener = true;
+                }
+
+                if (skip_default_listener) continue;
+            }
+
+            listener[i]?.(data);
         }
     },
 }
