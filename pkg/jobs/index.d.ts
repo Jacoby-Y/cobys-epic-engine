@@ -4,7 +4,7 @@ type Jobs = {
     runJobs(delta_time: number): void;
 };
 type Job = {
-    call_time: number;
+    wait_time: number;
     callback: JobCallback;
 };
 type JobCallback = () => (void | number);
