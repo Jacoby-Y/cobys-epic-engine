@@ -108,7 +108,7 @@ export function hexBrightness(hex: string, amount: number): string {
 	gc = gc.length == 1 ? "0"+gc : gc;
 	bc = bc.length == 1 ? "0"+bc : bc;
 
-	return "#" + rc + gc + bc + a;
+	return ("#" + rc + gc + bc + a).toUpperCase();
 }
 
 /** Generates a random integer between the specified minimum (inclusive) and maximum (exclusive) values. */
@@ -239,8 +239,15 @@ export function sum(nums: float[]): float {
 }
 
 /** Combines multiple functions into a single function that executes them sequentially. */
-export function compose(...funcs: Function[]) {
+export function sequence(...funcs: Function[]) {
 	return function() {
 		funcs.forEach(fn => fn());
 	}
+}
+
+/** Composes the given functions. Not sure how to describe it really. */
+export function compose<T>(...funcs: Function[]): (input: T) => T {
+	return (input: T) => {
+		return funcs.reduce((result, func) => func(result), input);
+	};
 }

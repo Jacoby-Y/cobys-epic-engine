@@ -4,11 +4,11 @@ type str = string;
 export declare let ctx: CanvasRenderingContext2D;
 export declare let canvas: HTMLCanvasElement;
 export declare let canvas_size: {
-    readonly w: number;
-    readonly h: number;
+    w: number;
+    h: number;
     center: {
-        readonly x: number;
-        readonly y: number;
+        x: number;
+        y: number;
     };
 };
 /** `enabled() = get value` || `enabled(true | false) = set value` */

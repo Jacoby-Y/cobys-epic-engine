@@ -76,5 +76,7 @@ export declare function mapKeys<T>(object: Object, fn: (key: string) => T): {
 /** Calculates the sum of an array of numbers, treating undefined values as 0. */
 export declare function sum(nums: float[]): float;
 /** Combines multiple functions into a single function that executes them sequentially. */
-export declare function compose(...funcs: Function[]): () => void;
+export declare function sequence(...funcs: Function[]): () => void;
+/** Composes the given functions. Not sure how to describe it really. */
+export declare function compose<T>(...funcs: Function[]): (input: T) => T;
 export {};

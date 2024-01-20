@@ -1,11 +1,16 @@
 export type DefaultSignalName = ("SetCanvas" | "SetScale");
-type SignalFunction = (data: any) => void;
+type SignalFunction = (data?: any) => void;
+type CaseListeners = Record<any, SignalFunction[]>;
 type SignalType = {
     listeners: {
-        [key: string]: SignalFunction[];
+        [listener_name: string]: SignalFunction[];
     };
-    listen<T = string>(name: T, listener: SignalFunction): () => void;
-    emit<T = DefaultSignalName, D = any>(name: T, data?: D): void;
+    case_listeners: {
+        [listener_name: string]: CaseListeners;
+    };
+    listen(name: any, listener: SignalFunction): () => void;
+    listenOn(name: any, value: any, listener: SignalFunction): () => void;
+    emit<T = string>(name: T, data?: any): void;
 };
 declare const signal: SignalType;
 export default signal;

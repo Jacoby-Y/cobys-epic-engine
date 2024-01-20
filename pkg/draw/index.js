@@ -2,11 +2,9 @@ import signal from "../signal";
 export let ctx;
 export let canvas;
 export let canvas_size = {
-    get w() { return canvas?.width ?? 1080; },
-    get h() { return canvas?.height ?? 1080; },
+    w: 0, h: 0,
     center: {
-        get x() { return canvas_size.w / 2; },
-        get y() { return canvas_size.h / 2; },
+        x: 0, y: 0,
     }
 };
 let _enabled = true;
@@ -30,6 +28,10 @@ export function setCanvas(_canvas) {
     ctx.lineCap = "round";
     og_width = canvas.width;
     og_height = canvas.height;
+    canvas_size.w = og_width;
+    canvas_size.h = og_height;
+    canvas_size.center.x = og_width / 2;
+    canvas_size.center.y = og_height / 2;
     setScale();
     signal.emit("SetCanvas", canvas);
 }

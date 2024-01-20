@@ -90,7 +90,7 @@ export function hexBrightness(hex, amount) {
     rc = rc.length == 1 ? "0" + rc : rc;
     gc = gc.length == 1 ? "0" + gc : gc;
     bc = bc.length == 1 ? "0" + bc : bc;
-    return "#" + rc + gc + bc + a;
+    return ("#" + rc + gc + bc + a).toUpperCase();
 }
 /** Generates a random integer between the specified minimum (inclusive) and maximum (exclusive) values. */
 export function randomInt(min, max) {
@@ -193,8 +193,14 @@ export function sum(nums) {
     return nums.reduce((p, c) => p + (c ?? 0));
 }
 /** Combines multiple functions into a single function that executes them sequentially. */
-export function compose(...funcs) {
+export function sequence(...funcs) {
     return function () {
         funcs.forEach(fn => fn());
+    };
+}
+/** Composes the given functions. Not sure how to describe it really. */
+export function compose(...funcs) {
+    return (input) => {
+        return funcs.reduce((result, func) => func(result), input);
     };
 }

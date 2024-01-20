@@ -1,4 +1,5 @@
 import { isCanvasSet } from "../draw"
+import jobs from "../jobs"
 
 type RunnerType = {
     funcs: { (): void }[]
@@ -71,6 +72,8 @@ function runGame(time_stamp: number = performance.now()) {
     deltas_i = (deltas_i + 1) % deltas.length;
 
     if (deltas_i == 0) fps = Math.round(1000 / (deltas.reduce((p, c)=> p+c) / deltas.length));
+
+    jobs.runJobs(delta_time);
 
     // return FPS.set(420.69);
     requestAnimationFrame(runGame);
