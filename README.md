@@ -85,11 +85,36 @@ startGame();
 
 ___
 
-#### Installation
+#### Add To Project
 ```bash
 # Just install it using npm (or pnpm, of course)
 
 npm i cobys-epic-engine@latest
 
 # That's it, right?
+```
+
+___
+
+#### Building The Engine
+```bash
+git clone https://github.com/Jacoby-Y/cobys-epic-engine.git
+cd cobys-epic-engine
+npm i
+
+# Will compile and build package in /pkg
+npm run build
+
+# If you want to use your local version...
+cd pkg
+npm link
+cd ~/path/to/other/project
+npm link cobys-epic-engine
+# Sometimes, to get this to work, I have to:
+# - delete node_modules
+# - link to package again
+# - then do npm i after
+# - maybe even remove it from package.json so it doesn't download it from npm
+
+# (but, also I use pnpm, so who knows)
 ```
